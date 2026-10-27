@@ -2,7 +2,7 @@
 
 A maze race lab. Generate a maze, pick two algorithms and watch them race to the exit. The generators and solvers are written in **Java** and run **in the browser** through [CheerpJ](https://cheerpj.com/), so the live demo executes the compiled Java bytecode, not a JavaScript copy.
 
-**Live demo:** _(link added after deploy)_
+**Live demo:** https://mazeforgeusingjava.netlify.app/
 
 ## What it shows
 
