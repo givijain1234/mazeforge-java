@@ -96,3 +96,4 @@ MIT. See `LICENSE`.
 
 - In `web/index.html`, change the footer link `id="repo"` (currently `https://github.com/`) to your repository URL.
 - In this README, replace the "Live demo" placeholder with your Netlify URL once deployed.
+# mazeforge-java
