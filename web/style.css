@@ -1,0 +1,36 @@
+:root{--bg:#0f1420;--panel:#171e2e;--ink:#e8ecf4;--mute:#9aa6bd;--acc:#5eead4;--acc2:#f59e0b;--line:#2a3449}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.5 system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+header{padding:28px 20px 8px;max-width:1180px;margin:auto}
+h1{margin:0;font-size:34px;letter-spacing:.5px;color:var(--acc)}
+.tag{margin:4px 0 0;color:var(--mute)}
+main{display:grid;grid-template-columns:260px 1fr;gap:18px;max-width:1180px;margin:14px auto;padding:0 20px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+.controls{min-width:0;display:flex;flex-direction:column;gap:12px;align-self:start}
+label{display:flex;flex-direction:column;gap:4px;color:var(--mute);font-size:13px}
+select,input[type=number]{width:100%;background:#0f1522;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px;font-size:14px}
+.row{display:flex;gap:8px}.row input{flex:1;min-width:0}
+button{background:#222c42;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:9px 14px;font-size:14px;cursor:pointer}
+button:hover:not(:disabled){border-color:var(--acc)}
+button:disabled{opacity:.45;cursor:not-allowed}
+button.primary{background:var(--acc);color:#04201c;border-color:var(--acc);font-weight:600}
+.buttons button{flex:1}
+.status{margin:0;font-size:13px;color:var(--acc2);min-height:20px}
+.boards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+figure{margin:0}
+figcaption{font-weight:600;margin-bottom:6px}
+canvas{width:100%;height:auto;background:#0b101b;border:1px solid var(--line);border-radius:8px;display:block}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin:10px 2px;color:var(--mute);font-size:12px}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.start{background:#34d399}.goal{background:#f43f5e}.explored{background:#38bdf8}.path{background:#fde047}
+.mud1{background:#1c2638}.mud5{background:#6b4a2b}.mud9{background:#8a4b1a}
+table{width:100%;border-collapse:collapse;margin-top:6px}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line);font-size:14px}
+th{color:var(--mute);font-weight:500}
+td.best{color:var(--acc);font-weight:600}
+.note{color:var(--mute);margin:10px 2px;min-height:22px}
+.about{max-width:1140px;margin:0 auto 30px}
+.about h2{margin-top:0;font-size:18px}
+.foot{color:var(--mute);font-size:13px}
+a{color:var(--acc)}
+@media(max-width:820px){main{grid-template-columns:1fr}.boards{grid-template-columns:1fr}}

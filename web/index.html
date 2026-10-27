@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MazeForge - maze race lab powered by real Java</title>
+<meta name="description" content="Generate mazes and race BFS, DFS, Dijkstra and A*. The algorithms are written in Java and run in your browser through CheerpJ.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>MazeForge</h1>
+  <p class="tag">A maze race lab. The generators and solvers are plain <strong>Java</strong>, compiled and run in your browser.</p>
+</header>
+
+<main>
+  <section class="panel controls">
+    <label>Maze algorithm
+      <select id="gen">
+        <option value="backtracker">Backtracker (long corridors)</option>
+        <option value="prim">Prim (many dead ends)</option>
+        <option value="kruskal">Kruskal (union-find)</option>
+      </select>
+    </label>
+    <label>Size
+      <select id="size">
+        <option value="15x10">15 x 10</option>
+        <option value="25x16" selected>25 x 16</option>
+        <option value="35x22">35 x 22</option>
+      </select>
+    </label>
+    <label>Seed
+      <span class="row"><input id="seed" type="number" min="1" max="999999" value="42"><button id="rand" type="button" title="Random seed">Shuffle</button></span>
+    </label>
+    <label>Loops <output id="loopsOut">12%</output>
+      <input id="loops" type="range" min="0" max="30" value="12">
+    </label>
+    <label>Racer A
+      <select id="solverA">
+        <option value="bfs">BFS</option><option value="dfs">DFS</option>
+        <option value="dijkstra">Dijkstra</option><option value="astar" selected>A*</option>
+      </select>
+    </label>
+    <label>Racer B
+      <select id="solverB">
+        <option value="bfs" selected>BFS</option><option value="dfs">DFS</option>
+        <option value="dijkstra">Dijkstra</option><option value="astar">A*</option>
+      </select>
+    </label>
+    <div class="row buttons">
+      <button id="generate" type="button" disabled>Generate</button>
+      <button id="race" type="button" class="primary" disabled>Race</button>
+    </div>
+    <p id="status" class="status">Loading the Java runtime...</p>
+  </section>
+
+  <section class="stage">
+    <div class="boards">
+      <figure><figcaption id="capA">Racer A</figcaption><canvas id="boardA"></canvas></figure>
+      <figure><figcaption id="capB">Racer B</figcaption><canvas id="boardB"></canvas></figure>
+    </div>
+    <div class="legend">
+      <span><i class="sw start"></i>start</span><span><i class="sw goal"></i>goal</span>
+      <span><i class="sw explored"></i>expanded</span><span><i class="sw path"></i>final path</span>
+      <span><i class="sw mud1"></i>cost 1</span><span><i class="sw mud5"></i>cost 5</span><span><i class="sw mud9"></i>cost 9</span>
+    </div>
+    <table id="stats" class="panel">
+      <thead><tr><th>Solver</th><th>Cells expanded</th><th>Path steps</th><th>Path cost</th><th>Guarantee</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <p class="note" id="insight"></p>
+  </section>
+</main>
+
+<section class="about panel">
+  <h2>How to read the race</h2>
+  <ul>
+    <li><strong>Both racers replay one expansion per tick.</strong> Browser animation time says nothing about algorithm speed, so the numbers to compare are cells expanded, path steps and path cost. They come straight from the Java code.</li>
+    <li><strong>Terrain costs 1 to 9</strong> (shaded cells). BFS minimises steps and ignores cost. Dijkstra and A* minimise total cost. With <em>loops</em> above 0% a maze has several routes, so the three can disagree.</li>
+    <li>A* uses Manhattan distance, which never overestimates here (the cheapest cell costs 1), so it matches Dijkstra's cost while usually expanding fewer cells.</li>
+    <li>The same seed and settings always rebuild the same maze. The link in your address bar is shareable.</li>
+  </ul>
+  <p class="foot">Source and tests: <a id="repo" href="https://github.com/">GitHub</a>. Java runs in the browser with <a href="https://cheerpj.com/">CheerpJ</a> by Leaning Technologies (Community License). Maze algorithms follow Jamis Buck's write-ups; A* follows Hart, Nilsson and Raphael (1968).</p>
+</section>
+
+<script src="https://cjrtnc.leaningtech.com/4.3/loader.js"></script>
+<script src="app.js" type="module"></script>
+</body>
+</html>
